@@ -1,0 +1,11 @@
+# Python files
+*.py[cod]
+*.egg-info
+__pycache__
+keys
+
+# Vim files
+.*.swp
+
+# Make files
+Makefile
