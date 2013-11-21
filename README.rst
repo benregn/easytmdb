@@ -1,10 +1,10 @@
 tmdbsimple
 ==========
 
-A Python wrapper for The Movie Database v3
-------------------------------------------
+A wrapper for The Movie Database v3
+-----------------------------------
 
-*tmdbsimple* is a Python wrapper for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
@@ -27,10 +27,9 @@ You can install *tmdbsimple* using one of the following techniques.
 
         pip install tmdbsimple
 
-  (pip won't accept underscores so I am going to update the name soon.)
-- Download the .zip (or .tar.gz) file from PyPI and install it yourself
+- Download the .zip or .tar.gz file from PyPI and install it yourself
 - Download the `source from Github` and install it yourself
-If you install it yourself, be sure to also install requests_.
+If you install it yourself, also install requests_.
 
 .. _source from Github: http://github.com/celiao/tmdbsimple
 .. _requests: http://www.python-requests.org/en/latest/
@@ -126,5 +125,3 @@ You also can call one of the methods without explicitly instanciating an object.
 
 If you use Authentication to access a user Account, be sure to check out
 https://www.themoviedb.org/documentation/api/sessions.
-
-Have fun!
