@@ -7,9 +7,12 @@ Created by Celia Oakley on 2013-10-31.
 """
 
 import json
+
 import requests
 
+
 class TMDB:
+
     def __init__(self, api_key, version=3):
         TMDB.api_key = str(api_key)
         TMDB.url = 'https://api.themoviedb.org' + '/' + str(version)
@@ -22,22 +25,22 @@ class TMDB:
         elif method == 'POST':
             for key in params.keys():
                 url += '&' + key + '=' + params[key]
-            headers = {'Content-Type': 'application/json', \
+            headers = {'Content-Type': 'application/json',
                        'Accept': 'application/json'}
-            content = requests.post(url, data=json.dumps(json_body), \
+            content = requests.post(url, data=json.dumps(json_body),
                                     headers=headers).content
         elif method == 'DELETE':
             for key in params.keys():
                 url += '&' + key + '=' + params[key]
-            headers = {'Content-Type': 'application/json', \
+            headers = {'Content-Type': 'application/json',
                        'Accept': 'application/json'}
-            content = requests.delete(url, data=json.dumps(json_body), \
-                                    headers=headers).content
+            content = requests.delete(url, data=json.dumps(json_body),
+                                      headers=headers).content
         else:
             raise Exception('method: ' + method + ' not supported.')
         response = json.loads(content.decode('utf-8'))
         return response
-    
+
     #
     # Set attributes to dictionary values.
     # - e.g.
@@ -55,6 +58,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#configuration
     #
     class Configuration:
+
         def __init__(self):
             pass
 
@@ -73,6 +77,7 @@ class TMDB:
     #   https://www.themoviedb.org/documentation/api/sessions
     #
     class Authentication:
+
         def __init__(self):
             pass
 
@@ -103,6 +108,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#account
     #
     class Account:
+
         def __init__(self, session_id):
             self.session_id = session_id
 
@@ -114,7 +120,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Faccount%2F{id}%2Flists
         # optional parameters: page, language
         def lists(self, params={}):
@@ -159,12 +165,12 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://preview.tinyurl.com/post-account-movie-watchlist
         # required JSON body: movie_id, movie_watchlist
         def movie_watchlist_post(self, json_body):
             path = 'account' + '/' + str(json_body['movie_id']) + \
-                  '/movie_watchlist'
+                   '/movie_watchlist'
             params = {'session_id': self.session_id}
             response = TMDB._request('POST', path, params, json_body)
             TMDB._set_attrs_to_values(self, response)
@@ -175,7 +181,9 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#movies
     #
     class Movies:
+
         """ """
+
         def __init__(self, id=0):
             self.id = id
 
@@ -245,7 +253,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F{id}%2Freviews
         # optional parameters: page, language
         def reviews(self, params={}):
@@ -253,7 +261,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F{id}%2Flists
         # optional parameters: page, language
         def lists(self, params={}):
@@ -261,7 +269,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F{id}%2Fchanges
         # optional parameters: start_date, end_date
         def changes(self, params={}):
@@ -292,7 +300,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2Fpopular
         # optional parameters: page, language
         def popular(self, params={}):
@@ -331,6 +339,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#collections
     #
     class Collections:
+
         def __init__(self, id):
             self.id = id
 
@@ -355,6 +364,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#tv
     #
     class TV:
+
         def __init__(self, id=0):
             self.id = id
 
@@ -365,7 +375,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Ftv%2F{id}%2Fcredits
         # optional parameter: language
         def credits(self, params={}):
@@ -411,6 +421,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#tvseasons
     #
     class TV_Seasons:
+
         def __init__(self, id, season_number):
             self.id = id
             self.season_number = season_number
@@ -455,6 +466,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#tvepisodes
     #
     class TV_Episodes:
+
         def __init__(self, id, season_number, episode_number):
             self.id = id
             self.season_number = season_number
@@ -505,6 +517,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#people
     #
     class People:
+
         def __init__(self, id=0):
             self.id = id
 
@@ -574,6 +587,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#credits
     #
     class Credits:
+
         def __init__(self, credit_id):
             self.credit_id = credit_id
 
@@ -590,6 +604,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#lists
     #
     class Lists:
+
         def __init__(self, id=0, session_id=0):
             self.id = id
             self.session_id = session_id
@@ -627,7 +642,7 @@ class TMDB:
             response = TMDB._request('POST', path, params, json_body)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#post-%2F3%2Flist%2F{id}%2Fremove_item
         # required JSON body: media_id
         def remove_item(self, json_body):
@@ -650,6 +665,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#companies
     #
     class Companies:
+
         def __init__(self, id=0):
             self.id = id
 
@@ -659,7 +675,7 @@ class TMDB:
             response = TMDB._request('GET', path)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fcompany%2F{id}%2Fmovies
         # optional parameters: page, language
         def movies(self, params={}):
@@ -673,6 +689,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#networks
     #
     class Networks:
+
         def __init__(self, id):
             self.id = id
 
@@ -688,6 +705,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#genres
     #
     class Genres:
+
         def __init__(self, id=0):
             self.id = id
 
@@ -698,7 +716,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fgenre%2F{id}%2Fmovies
         # optional parameters: page, language, include_all_movies, include_adult
         def movies(self, params={}):
@@ -712,6 +730,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#keywords
     #
     class Keywords:
+
         def __init__(self, id):
             self.id = id
 
@@ -735,13 +754,14 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#discover
     #
     class Discover:
+
         def __init__(self):
             pass
 
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fdiscover%2Fmovie
-        # optional parameters: page, language, sort_by, include_adult, year, 
-        # primary_release_year, vote_count.gte, vote_average.gte, with_genres, 
-        # release_date.gte, release_date.lte, certification_country, 
+        # optional parameters: page, language, sort_by, include_adult, year,
+        # primary_release_year, vote_count.gte, vote_average.gte, with_genres,
+        # release_date.gte, release_date.lte, certification_country,
         # certification.lte, with_companies
         def movie(self, params):
             path = 'discover/movie'
@@ -764,12 +784,13 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#search
     #
     class Search:
+
         def __init__(self):
             pass
 
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fsearch%2Fmovie
         # required parameters: query
-        # optional parameters: page, language, include_adult, year, 
+        # optional parameters: page, language, include_adult, year,
         # primary_release_year, search_type
         def movie(self, params):
             path = 'search/movie'
@@ -836,6 +857,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#reviews
     #
     class Reviews:
+
         def __init__(self, id):
             self.id = id
 
@@ -851,6 +873,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#changes
     #
     class Changes:
+
         def __init__(self):
             pass
 
@@ -861,7 +884,7 @@ class TMDB:
             response = TMDB._request('GET', path, params)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
+
         # http://docs.themoviedb.apiary.io/#get-%2F3%2Fperson%2Fchanges
         # optional parameters: page, start_date, end_date
         def person(self, params={}):
@@ -875,6 +898,7 @@ class TMDB:
     # http://docs.themoviedb.apiary.io/#jobs
     #
     class Jobs:
+
         def __init__(self):
             pass
 
@@ -884,4 +908,3 @@ class TMDB:
             response = TMDB._request('GET', path)
             TMDB._set_attrs_to_values(self, response)
             return response
-            
