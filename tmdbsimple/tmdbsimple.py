@@ -11,7 +11,7 @@ import json
 import requests
 
 
-class TMDB:
+class TMDB(object):
 
     def __init__(self, api_key, version=3):
         TMDB.api_key = str(api_key)
@@ -57,7 +57,7 @@ class TMDB:
     # Configuration
     # http://docs.themoviedb.apiary.io/#configuration
     #
-    class Configuration:
+    class Configuration(object):
 
         def __init__(self):
             pass
@@ -76,7 +76,7 @@ class TMDB:
     # Note: to use authentication to access a user account, see:
     #   https://www.themoviedb.org/documentation/api/sessions
     #
-    class Authentication:
+    class Authentication(object):
 
         def __init__(self):
             pass
@@ -107,7 +107,7 @@ class TMDB:
     # Account
     # http://docs.themoviedb.apiary.io/#account
     #
-    class Account:
+    class Account(object):
 
         def __init__(self, session_id):
             self.session_id = session_id
@@ -180,7 +180,7 @@ class TMDB:
     # Movies
     # http://docs.themoviedb.apiary.io/#movies
     #
-    class Movies:
+    class Movies(object):
 
         """ """
 
@@ -338,7 +338,7 @@ class TMDB:
     # Collections
     # http://docs.themoviedb.apiary.io/#collections
     #
-    class Collections:
+    class Collections(object):
 
         def __init__(self, id):
             self.id = id
@@ -363,7 +363,7 @@ class TMDB:
     # TV
     # http://docs.themoviedb.apiary.io/#tv
     #
-    class TV:
+    class TV(object):
 
         def __init__(self, id=0):
             self.id = id
@@ -420,7 +420,7 @@ class TMDB:
     # TV Seasons
     # http://docs.themoviedb.apiary.io/#tvseasons
     #
-    class TV_Seasons:
+    class TV_Seasons(object):
 
         def __init__(self, id, season_number):
             self.id = id
@@ -465,7 +465,7 @@ class TMDB:
     # TV Episodes
     # http://docs.themoviedb.apiary.io/#tvepisodes
     #
-    class TV_Episodes:
+    class TV_Episodes(object):
 
         def __init__(self, id, season_number, episode_number):
             self.id = id
@@ -516,7 +516,7 @@ class TMDB:
     # People
     # http://docs.themoviedb.apiary.io/#people
     #
-    class People:
+    class People(object):
 
         def __init__(self, id=0):
             self.id = id
@@ -586,7 +586,7 @@ class TMDB:
     # Credits
     # http://docs.themoviedb.apiary.io/#credits
     #
-    class Credits:
+    class Credits(object):
 
         def __init__(self, credit_id):
             self.credit_id = credit_id
@@ -603,7 +603,7 @@ class TMDB:
     # Lists
     # http://docs.themoviedb.apiary.io/#lists
     #
-    class Lists:
+    class Lists(object):
 
         def __init__(self, id=0, session_id=0):
             self.id = id
@@ -664,7 +664,7 @@ class TMDB:
     # Companies
     # http://docs.themoviedb.apiary.io/#companies
     #
-    class Companies:
+    class Companies(object):
 
         def __init__(self, id=0):
             self.id = id
@@ -688,7 +688,7 @@ class TMDB:
     # Networks
     # http://docs.themoviedb.apiary.io/#networks
     #
-    class Networks:
+    class Networks(object):
 
         def __init__(self, id):
             self.id = id
@@ -704,7 +704,7 @@ class TMDB:
     # Genres
     # http://docs.themoviedb.apiary.io/#genres
     #
-    class Genres:
+    class Genres(object):
 
         def __init__(self, id=0):
             self.id = id
@@ -729,7 +729,7 @@ class TMDB:
     # Keywords
     # http://docs.themoviedb.apiary.io/#keywords
     #
-    class Keywords:
+    class Keywords(object):
 
         def __init__(self, id):
             self.id = id
@@ -753,7 +753,7 @@ class TMDB:
     # Discover
     # http://docs.themoviedb.apiary.io/#discover
     #
-    class Discover:
+    class Discover(object):
 
         def __init__(self):
             pass
@@ -783,7 +783,7 @@ class TMDB:
     # Search
     # http://docs.themoviedb.apiary.io/#search
     #
-    class Search:
+    class Search(object):
 
         def __init__(self):
             pass
@@ -856,7 +856,7 @@ class TMDB:
     # Reviews
     # http://docs.themoviedb.apiary.io/#reviews
     #
-    class Reviews:
+    class Reviews(object):
 
         def __init__(self, id):
             self.id = id
@@ -872,7 +872,7 @@ class TMDB:
     # Changes
     # http://docs.themoviedb.apiary.io/#changes
     #
-    class Changes:
+    class Changes(object):
 
         def __init__(self):
             pass
@@ -897,7 +897,7 @@ class TMDB:
     # Jobs
     # http://docs.themoviedb.apiary.io/#jobs
     #
-    class Jobs:
+    class Jobs(object):
 
         def __init__(self):
             pass
