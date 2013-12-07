@@ -9,3 +9,7 @@ keys
 
 # Make files
 Makefile
+
+# sphinx
+!docs/Makefile
+docs/build
