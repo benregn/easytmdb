@@ -76,7 +76,7 @@ class Movies(TMDB):
         super(Movies, self).__init__()
         self.id = id
 
-    def info(self, params={}):
+    def info(self, **kwargs):
         """Get the basic movie information for a specific movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D
@@ -87,11 +87,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id)
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def alternative_titles(self, params={}):
+    def alternative_titles(self, **kwargs):
         """Get the alternative titles for a specific movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Falternative_titles
@@ -102,11 +103,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/alternative_titles'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def credits(self):
+    def credits(self, **kwargs):
         """Get the cast and crew information for a specific movie id.
 
         TMDB docs: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Fcredits
@@ -115,11 +117,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/credits'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def images(self, params={}):
+    def images(self, **kwargs):
         """Get the images (posters and backdrops) for a specific movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Fimages
@@ -132,11 +135,12 @@ class Movies(TMDB):
                                    separated, e.g. 'credits, images'.
         """
         path = 'movie' + '/' + str(self.id) + '/images'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def keywords(self):
+    def keywords(self, **kwargs):
         """Get the plot keywords for a specific movie id.
 
         TMDB docs: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Fkeywords
@@ -145,11 +149,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/keywords'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def releases(self):
+    def releases(self, **kwargs):
         """Get the release date by country for a specific movie id.
 
         TMDB docs: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Freleases
@@ -158,11 +163,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/releases'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def trailers(self):
+    def trailers(self, **kwargs):
         """Get the trailers for a specific movie id.
 
         TMDB docs: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Ftrailers
@@ -171,11 +177,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/trailers'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def translations(self):
+    def translations(self, **kwargs):
         """Get the translations for a specific movie id.
 
         TMDB docs: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Ftranslations
@@ -184,11 +191,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/translations'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def similar_movies(self, params={}):
+    def similar_movies(self, **kwargs):
         """Get the similar movies for a specific movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Fsimilar_movies
@@ -200,11 +208,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/similar_movies'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def reviews(self, params={}):
+    def reviews(self, **kwargs):
         """Get the reviews for a particular movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Freviews
@@ -216,11 +225,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/reviews'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def lists(self, params={}):
+    def lists(self, **kwargs):
         """Get the lists that the movie belongs to.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Flists
@@ -232,11 +242,12 @@ class Movies(TMDB):
                                    'credits, images'
         """
         path = 'movie' + '/' + str(self.id) + '/lists'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def changes(self, params={}):
+    def changes(self, **kwargs):
         """Get the changes for a specific movie id.
 
         Changes are grouped by key, and ordered by date in descending order. By
@@ -250,21 +261,23 @@ class Movies(TMDB):
         :param end_date: (optional) Same as start_date
         """
         path = 'movie' + '/' + str(self.id) + '/changes'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def latest(self):
+    def latest(self, **kwargs):
         """Get the latest movie id.
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2Flatest
         """
         path = 'movie/latest'
-        response = self._get(path)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def upcoming(self, params={}):
+    def upcoming(self, **kwargs):
         """Get the list of upcoming movies.
 
         This list refreshes every day. The maximum number of items this list will include is 100.
@@ -276,11 +289,12 @@ class Movies(TMDB):
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
         path = 'movie/upcoming'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def now_playing(self, params={}):
+    def now_playing(self, **kwargs):
         """Get the list of movies playing in theatres.
 
         This list refreshes every day. The maximum number of items this list will include is 100.
@@ -292,11 +306,12 @@ class Movies(TMDB):
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
         path = 'movie/now_playing'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def popular(self, params={}):
+    def popular(self, **kwargs):
         """Get the list of popular movies on The Movie Database.
 
         This list refreshes every day.
@@ -308,11 +323,12 @@ class Movies(TMDB):
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
         path = 'movie/popular'
-        response = self._get(path, params)
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def top_rated(self, params={}):
+    def top_rated(self, **kwargs):
         """Get the list of top rated movies.
 
         This list refreshes every day. This list only includes movies that have
@@ -325,11 +341,12 @@ class Movies(TMDB):
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
         path = 'movie/top_rated'
-        response = self._get('movie' + '/top_rated', params)
+
+        response = self._get('movie' + '/top_rated', kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def account_states(self, params):
+    def account_states(self, session_id, **kwargs):
         """Get status of whether or not the movie has been rated or added to favourite or watch lists.
 
         A `valid session <https://www.themoviedb.org/documentation/api/sessions>`_ id is required.
@@ -339,11 +356,13 @@ class Movies(TMDB):
         :param session_id: A session id as returned from :py:func:session_new
         """
         path = 'movie' + '/' + str(self.id) + '/account_states'
-        response = self._get(path, params)
+        kwargs.update({'session_id': session_id})
+
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def rating(self, params, json_body):
+    def rating(self, rating, session_id=None, guest_session_id=None, **kwargs):
         """Rate a movie.
 
         A `valid session <https://www.themoviedb.org/documentation/api/sessions>`_
@@ -351,9 +370,21 @@ class Movies(TMDB):
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Flists
 
-        :param page: (optional) Result page number, e.g. 3.
+        :param rating: A float
+        :param session_id: A session id as returned from :py:func:session_new.
+                           Required if guest_session_id is not specified.
+        :param guest_session_id: A session id as returned from :py:func:guest_session_new
+                                 Required if session_id is not specified.
         """
         path = 'movie' + '/' + str(self.id) + '/rating'
-        response = self._post(path, params, json_body)
+        if session_id is None and guest_session_id is None:
+            raise ValueError("Either 'session_id' or 'guest_session_id' keyword argument is required")
+        kwargs.update({'value': rating})
+        if session_id:
+            kwargs.update({'session_id': session_id})
+        else:
+            kwargs.update({'guest_session_id': guest_session_id})
+
+        response = self._post(path, kwargs)
         self._set_attrs_to_values(response)
         return response
