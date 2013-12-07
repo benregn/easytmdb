@@ -21,9 +21,8 @@ class TestMovies(unittest.TestCase):
     def test_info_with_language(self):
         id = 103332
         title = "Elle s'appelle Ruby"
-        language = 'fr'
         movie = Movies(id)
-        movie.info(language)
+        movie.info(language='fr')
         self.assertEqual(movie.title, title)
 
     def test_alternative_titles(self):
@@ -121,7 +120,7 @@ class TestMovies(unittest.TestCase):
     def test_account_states(self):
         id = 550
         movie = Movies(id)
-        movie.account_states({'session_id': SESSION_ID})
+        movie.account_states(session_id=SESSION_ID)
         self.assertTrue(hasattr(movie, 'favorite'))
 
     def test_rating(self):
@@ -129,7 +128,7 @@ class TestMovies(unittest.TestCase):
         success_code = 1
         update_code = 12
         movie = Movies(id)
-        movie.rating({'session_id': SESSION_ID}, {'value': 7.5})
+        movie.rating(rating=7.5, session_id=SESSION_ID)
         try:
             self.assertEqual(movie.status_code, success_code)
         except AssertionError:
