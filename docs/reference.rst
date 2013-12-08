@@ -1,5 +1,8 @@
 Reference
 ====================================
 
-.. automodule:: tmdbsimple
+.. automodule:: conf_auth
+   :members:
+
+.. automodule:: movies
    :members:
