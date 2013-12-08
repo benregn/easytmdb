@@ -20,7 +20,7 @@ class TMDB(object):
         return self.BASE_PATH + self.URLS[key]
 
     def _get_id_path(self, key):
-        return self._get_path().format(id=self.id)
+        return self._get_path(key).format(id=self.id)
 
     def _get_complete_url(self, path):
         return '{base}/{path}'.format(base=self.url, path=path)
