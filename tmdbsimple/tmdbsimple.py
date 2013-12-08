@@ -10,14 +10,22 @@ version = '3'
 class TMDB(object):
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json'}
+    BASE_PATH = ''
+    URLS = {}
 
     def __init__(self):
         self.url = 'https://api.themoviedb.org/{version}'.format(version=version)
 
-    def get_url(self, path):
+    def _get_path(self, key):
+        return self.BASE_PATH + self.URLS[key]
+
+    def _get_id_path(self, key):
+        return self._get_path().format(id=self.id)
+
+    def _get_complete_url(self, path):
         return '{base}/{path}'.format(base=self.url, path=path)
 
-    def get_params(self, params):
+    def _get_params(self, params):
         api_dict = {'api_key': api_key}
         if params:
             params.update(api_dict)
@@ -26,16 +34,16 @@ class TMDB(object):
         return params
 
     def _get(self, path, params=None):
-        url = self.get_url(path)
-        params = self.get_params(params)
+        url = self._get_complete_url(path)
+        params = self._get_params(params)
 
         response = requests.get(url, params=params, headers=self.headers)
 
         return json.loads(response.content.decode('utf-8'))
 
     def _post(self, path, params=None, payload=None):
-        url = self.get_url(path)
-        params = self.get_params(params)
+        url = self._get_complete_url(path)
+        params = self._get_params(params)
         if not payload:
             payload = {}
 
@@ -44,8 +52,8 @@ class TMDB(object):
         return json.loads(response.content.decode('utf-8'))
 
     def _delete(self, path, params=None, payload=None):
-        url = self.get_url(path)
-        params = self.get_params(params)
+        url = self._get_complete_url(path)
+        params = self._get_params(params)
         if not payload:
             payload = {}
 
@@ -71,6 +79,28 @@ class Movies(TMDB):
 
     See: http://docs.themoviedb.apiary.io/#movies
     """
+    BASE_PATH = 'movie/'
+    URLS = {
+        'info': '{id}',
+        'alternative_titles': '{id}/alternative_titles',
+        'credits': '{id}/credits',
+        'images': '{id}/images',
+        'keywords': '{id}/keywords',
+        'releases': '{id}/releases',
+        'trailers': '{id}/trailers',
+        'translations': '{id}/translations',
+        'similar_movies': '{id}/similar_movies',
+        'reviews': '{id}/reviews',
+        'lists': '{id}/lists',
+        'changes': '{id}/changes',
+        'latest': 'latest',
+        'upcoming': 'upcoming',
+        'now_playing': 'now_playing',
+        'popular': 'popular',
+        'top_rated': 'top_rated',
+        'account_states': '{id}/account_states',
+        'rating': '{id}/rating',
+    }
 
     def __init__(self, id=0):
         super(Movies, self).__init__()
@@ -86,7 +116,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id)
+        path = self._get_path('info')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -102,7 +132,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/alternative_titles'
+        path = self._get_id_path('alternative_titles')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -116,7 +146,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/credits'
+        path = self._get_id_path('credits')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -134,7 +164,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names, comma
                                    separated, e.g. 'credits, images'.
         """
-        path = 'movie' + '/' + str(self.id) + '/images'
+        path = self._get_id_path('images')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -148,7 +178,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/keywords'
+        path = self._get_id_path('keywords')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -162,7 +192,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/releases'
+        path = self._get_id_path('releases')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -176,7 +206,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/trailers'
+        path = self._get_id_path('trailers')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -190,7 +220,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/translations'
+        path = self._get_id_path('translations')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -207,7 +237,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/similar_movies'
+        path = self._get_id_path('similar_movies')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -224,7 +254,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/reviews'
+        path = self._get_id_path('reviews')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -241,7 +271,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = 'movie' + '/' + str(self.id) + '/lists'
+        path = self._get_id_path('lists')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -260,7 +290,7 @@ class Movies(TMDB):
         :param start_date: (optional) A string in the format 'YYYY-MM-DD'
         :param end_date: (optional) Same as start_date
         """
-        path = 'movie' + '/' + str(self.id) + '/changes'
+        path = self._get_id_path('changes')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -271,7 +301,7 @@ class Movies(TMDB):
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2Flatest
         """
-        path = 'movie/latest'
+        path = self._get_path('latest')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -288,7 +318,7 @@ class Movies(TMDB):
         :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
-        path = 'movie/upcoming'
+        path = self._get_path('upcoming')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -305,7 +335,7 @@ class Movies(TMDB):
         :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
-        path = 'movie/now_playing'
+        path = self._get_path('now_playing')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -322,7 +352,7 @@ class Movies(TMDB):
         :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
-        path = 'movie/popular'
+        path = self._get_path('popular')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
@@ -340,9 +370,9 @@ class Movies(TMDB):
         :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
-        path = 'movie/top_rated'
+        path = self._get_path('top_rated')
 
-        response = self._get('movie' + '/top_rated', kwargs)
+        response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
@@ -355,7 +385,7 @@ class Movies(TMDB):
 
         :param session_id: A session id as returned from :py:func:session_new
         """
-        path = 'movie' + '/' + str(self.id) + '/account_states'
+        path = self._get_id_path('account_states')
         kwargs.update({'session_id': session_id})
 
         response = self._get(path, kwargs)
@@ -376,7 +406,7 @@ class Movies(TMDB):
         :param guest_session_id: A session id as returned from :py:func:guest_session_new
                                  Required if session_id is not specified.
         """
-        path = 'movie' + '/' + str(self.id) + '/rating'
+        path = self._get_id_path('rating')
         if session_id is None and guest_session_id is None:
             raise ValueError("Either 'session_id' or 'guest_session_id' keyword argument is required")
         kwargs.update({'value': rating})
