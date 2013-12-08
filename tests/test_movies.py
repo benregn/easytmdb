@@ -2,7 +2,7 @@
 import unittest
 
 from tmdbsimple import base
-from tmdbsimple.tmdbsimple import Movies
+from tmdbsimple.movies import Movies
 
 from . import API_KEY, SESSION_ID
 
