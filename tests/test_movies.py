@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from tmdbsimple import tmdbsimple
+from tmdbsimple import base
 from tmdbsimple.tmdbsimple import Movies
 
 from . import API_KEY, SESSION_ID
 
 
-tmdbsimple.api_key = API_KEY
+base.api_key = API_KEY
 
 
 class TestMovies(unittest.TestCase):
