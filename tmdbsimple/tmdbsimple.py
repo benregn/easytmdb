@@ -44,7 +44,7 @@ class Movies(TMDB):
         :param append_to_response: (optional) Any Movies method names. E.g.
                                    'credits, images'
         """
-        path = self._get_path('info')
+        path = self._get_id_path('info')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
