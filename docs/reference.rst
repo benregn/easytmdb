@@ -6,3 +6,6 @@ Reference
 
 .. automodule:: movies
    :members:
+
+.. automodule:: tv
+   :members:
