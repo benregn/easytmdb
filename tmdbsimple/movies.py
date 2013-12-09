@@ -311,7 +311,7 @@ class Movies(TMDB):
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Faccount_states
 
-        :param session_id: A session id as returned from :py:func:session_new
+        :param session_id: A session id as returned from :py:meth:`.session_new`
         """
         path = self._get_id_path('account_states')
         kwargs.update({'session_id': session_id})
@@ -329,9 +329,9 @@ class Movies(TMDB):
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fmovie%2F%7Bid%7D%2Flists
 
         :param rating: A float
-        :param session_id: A session id as returned from :py:func:session_new.
+        :param session_id: A session id as returned from :py:meth:`.session_new`.
                            Required if guest_session_id is not specified.
-        :param guest_session_id: A session id as returned from :py:func:guest_session_new
+        :param guest_session_id: A session id as returned from :py:meth:`.guest_session_new`
                                  Required if session_id is not specified.
         """
         path = self._get_id_path('rating')

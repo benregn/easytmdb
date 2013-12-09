@@ -75,7 +75,7 @@ class Authentication(TMDB):
 
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fauthentication%2Fsession%2Fnew
 
-        :param request_token: The token generated from :py:func:token_new the
+        :param request_token: The token generated from :py:meth:`token_new` the
                               user to approve. The token needs to be approved
                               by the user before being used here.
         """
