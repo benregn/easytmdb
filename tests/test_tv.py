@@ -2,7 +2,7 @@
 import unittest
 
 from tmdbsimple import base
-from tmdbsimple.tv import TV, TVSeasons, TVEpisodes
+from tmdbsimple.tv import TV, TVSeasons, TVEpisodes, Networks
 
 from . import API_KEY
 
@@ -120,3 +120,12 @@ class TestTVEpisodes(unittest.TestCase):
         tv_episodes = TVEpisodes(id, season_number, episode_number)
         tv_episodes.images()
         self.assertTrue(hasattr(tv_episodes, 'stills'))
+
+
+class TestNetworks(unittest.TestCase):
+    def test_info(self):
+        id = 49
+        name = 'HBO'
+        network = Networks(id)
+        network.info()
+        self.assertEqual(network.name, name)

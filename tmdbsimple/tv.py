@@ -302,3 +302,30 @@ class TVEpisodes(TMDB):
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+class Networks(TMDB):
+    """Information about TV networks.
+
+    See: http://docs.themoviedb.apiary.io/#networks
+    """
+    BASE_PATH = 'network/'
+    URLS = {
+        'info': '{id}'
+    }
+
+    def __init__(self, id):
+        super(Networks, self).__init__()
+        self.id = id
+
+    def info(self):
+        """Get the basic information about a TV network.
+
+        You can use this ID to search for TV shows with the discover.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fnetwork%2F%7Bid%7D
+        """
+        path = self._get_id_path('info')
+        response = self._get(path)
+        self._set_attrs_to_values(response)
+        return response
