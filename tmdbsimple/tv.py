@@ -326,6 +326,7 @@ class Networks(TMDB):
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fnetwork%2F%7Bid%7D
         """
         path = self._get_id_path('info')
+
         response = self._get(path)
         self._set_attrs_to_values(response)
         return response

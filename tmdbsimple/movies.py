@@ -380,6 +380,7 @@ class Collections(TMDB):
                                    'images'
         """
         path = self._get_id_path('info')
+
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
@@ -397,6 +398,7 @@ class Collections(TMDB):
                                    separated, e.g. 'credits, images'.
         """
         path = self._get_id_path('images')
+
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
@@ -426,6 +428,7 @@ class Companies(TMDB):
                                    'movies'
         """
         path = self._get_id_path('info')
+
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
@@ -442,6 +445,7 @@ class Companies(TMDB):
                                    'info'
         """
         path = self._get_id_path('movies')
+
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response

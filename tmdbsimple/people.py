@@ -100,6 +100,7 @@ class People(TMDB):
         TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fperson%2F%7Bid%7D%2Fimages
         """
         path = self._get_id_path('images')
+
         response = self._get(path)
         self._set_attrs_to_values(response)
         return response
@@ -150,6 +151,7 @@ class People(TMDB):
                          639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
         """
         path = self._get_path('latest')
+
         response = self._get(path)
         self._set_attrs_to_values(response)
         return response
