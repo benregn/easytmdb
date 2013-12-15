@@ -9,3 +9,6 @@ Reference
 
 .. automodule:: tv
    :members:
+
+.. automodule:: people
+   :members:
