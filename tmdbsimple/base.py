@@ -5,6 +5,7 @@ import requests
 
 api_key = None
 version = '3'
+debug_url = None
 
 
 class TMDB(object):
@@ -14,7 +15,8 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        self.url = 'https://api.themoviedb.org/{version}'.format(version=version)
+        self.url = 'https://api.themoviedb.org/{version}' if not debug_url else debug_url + '/{version}'
+        self.url = self.url.format(version=version)
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
