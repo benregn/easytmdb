@@ -400,3 +400,48 @@ class Collections(TMDB):
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+class Companies(TMDB):
+    """Get information about movie companies.
+
+    See: http://docs.themoviedb.apiary.io/#companies
+    """
+    BASE_PATH = 'company/'
+    URLS = {
+        'info': '{id}',
+        'movies': '{id}/movies',
+    }
+
+    def __init__(self, id=0):
+        super(Companies, self).__init__()
+        self.id = id
+
+    def info(self, **kwargs):
+        """Get the basic information about a movie company.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fcompany%2F%7Bid%7D
+
+        :param append_to_response: (optional) Any Collections method names. E.g.
+                                   'movies'
+        """
+        path = self._get_id_path('info')
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def movies(self, **kwargs):
+        """Get the list of movies associated with a particular company.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fcompany%2F%7Bid%7D%2Fmovies
+
+        :param page: (optional) Result page number, e.g. 3.
+        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
+                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
+        :param append_to_response: (optional) Any Collections method names. E.g.
+                                   'info'
+        """
+        path = self._get_id_path('movies')
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response

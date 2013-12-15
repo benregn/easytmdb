@@ -2,7 +2,7 @@
 import unittest
 
 from tmdbsimple import base
-from tmdbsimple.movies import Movies, Collections
+from tmdbsimple.movies import Movies, Collections, Companies
 
 from . import API_KEY, SESSION_ID
 
@@ -148,3 +148,18 @@ class TestCollections(unittest.TestCase):
         collection = Collections(id)
         collection.images()
         self.assertTrue(hasattr(collection, 'backdrops'))
+
+
+class TestCompanies(unittest.TestCase):
+    def testCompaniesInfo(self):
+        id = 1
+        name = 'Lucasfilm'
+        company = Companies(id)
+        company.info()
+        self.assertEqual(company.name, name)
+
+    def testCompaniesMovies(self):
+        id = 1
+        company = Companies(id)
+        company.movies()
+        self.assertTrue(hasattr(company, 'results'))
