@@ -2,7 +2,7 @@
 import unittest
 
 from tmdbsimple import base
-from tmdbsimple.movies import Movies
+from tmdbsimple.movies import Movies, Collections
 
 from . import API_KEY, SESSION_ID
 
@@ -133,3 +133,18 @@ class TestMovies(unittest.TestCase):
             self.assertEqual(movie.status_code, success_code)
         except AssertionError:
             self.assertEqual(movie.status_code, update_code)
+
+
+class TestCollections(unittest.TestCase):
+    def test_info(self):
+        id = 10
+        name = 'Star Wars Collection'
+        collection = Collections(id)
+        collection.info()
+        self.assertEqual(collection.name, name)
+
+    def test_images(self):
+        id = 10
+        collection = Collections(id)
+        collection.images()
+        self.assertTrue(hasattr(collection, 'backdrops'))

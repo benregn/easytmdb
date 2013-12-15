@@ -346,3 +346,57 @@ class Movies(TMDB):
         response = self._post(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+class Collections(TMDB):
+    """Get information about movie collections
+
+    See: http://docs.themoviedb.apiary.io/#collections
+    """
+    BASE_PATH = 'collection/'
+    URLS = {
+        'info': '{id}',
+        'images': '{id}/images',
+    }
+
+    def __init__(self, id):
+        super(Collections, self).__init__()
+        self.id = id
+
+    def info(self, **kwargs):
+        """Get the basic collection information for a specific collection id.
+
+        You can get the ID needed for this method by making a :py:meth:`Movies.info`
+        request and paying attention to the `belongs_to_collection` hash.
+
+        Movie parts are not sorted in any particular order. If you would like
+        to sort them yourself you can use the provided `release_date`.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fcollection%2F%7Bid%7D
+
+        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
+                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
+        :param append_to_response: (optional) Any Collections method names. E.g.
+                                   'images'
+        """
+        path = self._get_id_path('info')
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def images(self, **kwargs):
+        """Get all of the images for a particular collection by collection id.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fcollection%2F%7Bid%7D%2Fimages
+
+        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
+                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
+        :param include_image_language: (optional) Comma separated ISO 639-1 codes,
+                                       e.g. 'en, es'.
+        :param append_to_response: (optional) Any Movies method names, comma
+                                   separated, e.g. 'credits, images'.
+        """
+        path = self._get_id_path('images')
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
