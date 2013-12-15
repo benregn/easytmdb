@@ -337,13 +337,13 @@ class Movies(TMDB):
         path = self._get_id_path('rating')
         if session_id is None and guest_session_id is None:
             raise ValueError("Either 'session_id' or 'guest_session_id' keyword argument is required")
-        kwargs.update({'value': rating})
+        payload = {'value': rating}
         if session_id:
             kwargs.update({'session_id': session_id})
         else:
             kwargs.update({'guest_session_id': guest_session_id})
 
-        response = self._post(path, kwargs)
+        response = self._post(path, kwargs, payload)
         self._set_attrs_to_values(response)
         return response
 
