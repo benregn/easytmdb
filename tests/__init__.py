@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
 API_KEY = ''
+
 REQUEST_TOKEN = ''
 SESSION_ID = ''
+USERNAME = ''
+
+MOVIE_ID = 86838
+MOVIE_TITLE = 'Seven Psychopaths'
+
+SUCCESS_CODE = 1
+AUTH_FAIL = 3
+UPDATE_CODE = 12
+DELETE_CODE = 13

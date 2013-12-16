@@ -12,3 +12,6 @@ Reference
 
 .. automodule:: people
    :members:
+
+.. automodule:: account
+   :members:
