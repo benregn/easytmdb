@@ -36,6 +36,7 @@ class Account(TMDB):
         kwargs.update({'session_id': self.session_id})
 
         response = self._get(path, kwargs)
+        # about account_id: http://www.themoviedb.org/talk/527f91b4760ee361f707cf57
         self.account_id = response['id']
         self._set_attrs_to_values(response)
         return response
