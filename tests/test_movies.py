@@ -4,7 +4,7 @@ import unittest
 from tmdbsimple import base
 from tmdbsimple.movies import Movies, Collections, Companies
 
-from . import API_KEY, SESSION_ID
+from . import API_KEY, SESSION_ID, SUCCESS_CODE, UPDATE_CODE
 
 
 base.api_key = API_KEY
@@ -125,14 +125,12 @@ class TestMovies(unittest.TestCase):
 
     def test_rating(self):
         id = 103332
-        success_code = 1
-        update_code = 12
         movie = Movies(id)
         movie.rating(rating=7.5, session_id=SESSION_ID)
         try:
-            self.assertEqual(movie.status_code, success_code)
+            self.assertEqual(movie.status_code, SUCCESS_CODE)
         except AssertionError:
-            self.assertEqual(movie.status_code, update_code)
+            self.assertEqual(movie.status_code, UPDATE_CODE)
 
 
 class TestCollections(unittest.TestCase):
