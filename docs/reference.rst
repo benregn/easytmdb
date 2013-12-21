@@ -1,6 +1,9 @@
 Reference
 ====================================
 
+.. automodule:: base
+   :members:
+
 .. automodule:: conf_auth
    :members:
 
@@ -14,4 +17,13 @@ Reference
    :members:
 
 .. automodule:: account
+   :members:
+
+.. automodule:: changes
+   :members:
+
+.. automodule:: search
+   :members:
+
+.. automodule:: discover
    :members:
