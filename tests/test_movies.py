@@ -2,7 +2,7 @@
 import unittest
 
 from tmdbsimple import base
-from tmdbsimple.movies import Movies, Collections, Companies, Keywords, Reviews
+from tmdbsimple.movies import Movies, Collections, Companies, Genres, Keywords, Reviews
 
 from . import API_KEY, SESSION_ID, SUCCESS_CODE, UPDATE_CODE
 
@@ -161,6 +161,19 @@ class TestCompanies(unittest.TestCase):
         company = Companies(id)
         company.movies()
         self.assertTrue(hasattr(company, 'results'))
+
+
+class TestGenres(unittest.TestCase):
+    def test_list(self):
+        genre = Genres()
+        genre.list()
+        self.assertTrue(hasattr(genre, 'genres'))
+
+    def test_movies(self):
+        id = 18
+        genre = Genres(id)
+        genre.movies()
+        self.assertTrue(hasattr(genre, 'results'))
 
 
 class TestKeywords(unittest.TestCase):
