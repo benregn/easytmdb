@@ -105,7 +105,7 @@ class Discover(TMDB):
                             genres. Expected value is an integer (the id of a
                             genre). Multiple values can be specified. Comma
                             separated indicates an 'AND' query, while a pipe (|)
-                                separated value indicates an 'OR'.
+                            separated value indicates an 'OR'.
         :param with_networks: (optional) Filter TV shows to include a specific
                               network. Expected value is an integer (the id of
                               a network). They can be comma separated to indicate
