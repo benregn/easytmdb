@@ -149,14 +149,14 @@ class TestCollections(unittest.TestCase):
 
 
 class TestCompanies(unittest.TestCase):
-    def testCompaniesInfo(self):
+    def test_info(self):
         id = 1
         name = 'Lucasfilm'
         company = Companies(id)
         company.info()
         self.assertEqual(company.name, name)
 
-    def testCompaniesMovies(self):
+    def test_movies(self):
         id = 1
         company = Companies(id)
         company.movies()
