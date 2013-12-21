@@ -79,10 +79,6 @@ class Discover(TMDB):
         self._set_attrs_to_values(response)
         return response
 
-    # http://docs.themoviedb.apiary.io/#get-%2F3%2Fdiscover%2Ftv
-    # optional parameters: page, language, sort_by, first_air_date_year,
-    # vote_count.gte, vote_average.gte, with_genres, with_networks,
-    # first_air_date.gte, first_air_date.lte
     def tv(self, **kwargs):
         """Discover TV shows by different types of data like average rating,
         number of votes, genres, the network they aired on and air dates.
