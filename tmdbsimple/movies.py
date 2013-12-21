@@ -449,3 +449,71 @@ class Companies(TMDB):
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
+
+
+class Keywords(TMDB):
+    """
+
+    See: http://docs.themoviedb.apiary.io/#keywords
+    """
+    BASE_PATH = 'keyword/'
+    URLS = {
+        'info': '{id}',
+        'movies': '{id}/movies',
+    }
+
+    def __init__(self, id):
+        self.id = id
+        super(Keywords, self).__init__()
+
+    def info(self, **kwargs):
+        """Get the basic information for a specific keyword id.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fkeyword%2F%7Bid%7D
+        """
+        path = self._get_id_path('info')
+
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def movies(self, **kwargs):
+        """Get the list of movies for a particular keyword by id.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fkeyword%2F%7Bid%7D%2Fmovies
+
+        :param page: (optional) Result page number, e.g. 3.
+        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
+                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
+        """
+        path = self._get_id_path('movies')
+
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+
+class Reviews(TMDB):
+    """Get information about reviews.
+
+    See: http://docs.themoviedb.apiary.io/#reviews
+    """
+    BASE_PATH = 'review/'
+    URLS = {
+        'info': '{id}',
+    }
+
+    def __init__(self, id):
+        self.id = id
+        super(Reviews, self).__init__()
+
+    def info(self, **kwargs):
+        """Get the full details of a review by ID.
+
+        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Freview%2F%7Bid%7D
+        """
+        path = self._get_id_path('info')
+
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
