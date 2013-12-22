@@ -12,8 +12,8 @@ class TMDB(object):
 
     def __init__(self):
         from . import VERSION, DEBUG_URL
-        self.url = 'https://api.themoviedb.org/{version}' if not DEBUG_URL else DEBUG_URL + '/{version}'
-        self.url = self.url.format(version=VERSION)
+        self.url = 'https://api.themoviedb.org' if not DEBUG_URL else DEBUG_URL
+        self.url += '/{version}'.format(version=VERSION)
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -27,6 +27,7 @@ class TMDB(object):
     def _get_params(self, params):
         from . import API_KEY
         api_dict = {'api_key': API_KEY}
+
         if params:
             params.update(api_dict)
         else:
