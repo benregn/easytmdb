@@ -3,10 +3,6 @@ import json
 
 import requests
 
-api_key = None
-version = '3'
-debug_url = None
-
 
 class TMDB(object):
     headers = {'Content-Type': 'application/json',
@@ -15,8 +11,9 @@ class TMDB(object):
     URLS = {}
 
     def __init__(self):
-        self.url = 'https://api.themoviedb.org/{version}' if not debug_url else debug_url + '/{version}'
-        self.url = self.url.format(version=version)
+        from . import VERSION, DEBUG_URL
+        self.url = 'https://api.themoviedb.org/{version}' if not DEBUG_URL else DEBUG_URL + '/{version}'
+        self.url = self.url.format(version=VERSION)
 
     def _get_path(self, key):
         return self.BASE_PATH + self.URLS[key]
@@ -28,7 +25,8 @@ class TMDB(object):
         return '{base}/{path}'.format(base=self.url, path=path)
 
     def _get_params(self, params):
-        api_dict = {'api_key': api_key}
+        from . import API_KEY
+        api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
         else:
