@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 API_KEY = ''
+DEBUG_URL = ''
 
 REQUEST_TOKEN = ''
 SESSION_ID = ''
