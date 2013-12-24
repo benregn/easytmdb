@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# tmdbsimple documentation build configuration file
+# easytmdb documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its containing dir.
 #
@@ -15,7 +15,7 @@ import sys, os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('../tmdbsimple'))
+sys.path.insert(0, os.path.abspath('../easytmdb'))
 
 # -- General configuration -----------------------------------------------------
 
@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'tmdbsimple'
+project = u'easytmdb'
 copyright = u'2013, Tomas Thor Jonsson'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -165,7 +165,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'tmdbsimpledoc'
+htmlhelp_basename = 'easytmdbdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -184,7 +184,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'tmdbsimple.tex', u'tmdbsimple Documentation',
+  ('index', 'easytmdb.tex', u'easytmdb Documentation',
    u'Tomas Thor Jonsson', 'manual'),
 ]
 
@@ -214,7 +214,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'tmdbsimple', u'tmdbsimple Documentation',
+    ('index', 'easytmdb', u'easytmdb Documentation',
      [u'Tomas Thor Jonsson'], 1)
 ]
 
@@ -228,8 +228,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'tmdbsimple', u'tmdbsimple Documentation',
-     u'Tomas Thor Jonsson', 'tmdbsimple',
+    ('index', 'easytmdb', u'easytmdb Documentation',
+     u'Tomas Thor Jonsson', 'easytmdb',
      "A Python wrapper for the themoviedb.org API", 'Miscellaneous'),
 ]
 

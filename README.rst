@@ -1,37 +1,38 @@
-tmdbsimple
+easytmdb
 ==========
 
 A wrapper for The Movie Database v3
 -----------------------------------
 
-*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+*easytmdb* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *easytmdb*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
 
 - Supports Python 3
 - One-to-one mapping between *tmdbsimple* functions and TMDb methods.
+- One-to-one mapping between *easytmdb* functions and TMDb methods.
 - Implements all TMDb methods, including Authentication and Accounts.
 - Implements new TV features.
 - Easy to access data using Python class attributes.
-- Easy to experiment with *tmdbsimple* functions inside the Python interpreter.
+- Easy to experiment with *easytmdb* functions inside the Python interpreter.
 - Code tested with unittests, which illustrate the function call syntax.
 
 Installation
 ------------
 
-You can install *tmdbsimple* using one of the following techniques.
+You can install *easytmdb* using one of the following techniques.
 
 - Use pip:
 ::
 
-        pip install tmdbsimple
+        pip install easytmdb
 
 - Download the .zip or .tar.gz file from PyPI and install it yourself
 - Download the `source from Github` and install it yourself
 If you install it yourself, also install requests_.
 
-.. _source from Github: http://github.com/celiao/tmdbsimple
+.. _source from Github: http://github.com/benregn/easytmdb
 .. _requests: http://www.python-requests.org/en/latest/
 
 API Key
@@ -48,14 +49,14 @@ You will need an API key to The Movie Database to access the API.  To obtain a k
 
 Examples
 --------
-Once you have the *tmdbsimple* package installed and a TMDb API key, you can start to play with the data.
+Once you have the *easytmdb* package installed and a TMDb API key, you can start to play with the data.
 
 First, import the library and create an instance of a TMDB object.
 
 .. code-block:: python
 
-    >>> import tmdbsimple
     >>> tmdb = TMDB('YOUR_API_KEY_HERE')
+    >>> import easytmdb as tmdb
 
 To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.
 
