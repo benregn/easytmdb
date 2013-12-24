@@ -4,8 +4,16 @@
 __pycache__
 keys
 
-# Vim files
-.*.swp
-
 # Make files
 Makefile
+
+# sphinx
+!docs/Makefile
+docs/build
+
+# editors
+## Vim files
+.*.swp
+
+## sublime text
+*.sublime*
