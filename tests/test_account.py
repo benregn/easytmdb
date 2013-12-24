@@ -29,7 +29,8 @@ class TestAccount(unittest.TestCase):
         self.acct.favorite(**kwargs)
 
         self.acct.favorite_movies()
-        self.assertEqual(self.acct.results[0]['title'], MOVIE_TITLE)
+        titles = [m['title'] for m in self.acct.results]
+        self.assertIn(MOVIE_TITLE, titles)
 
         kwargs.update({'favorite': False})
         self.acct.favorite(**kwargs)
