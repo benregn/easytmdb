@@ -67,7 +67,7 @@ class TestAccount(unittest.TestCase):
         kwargs = {'movie_id': MOVIE_ID, 'watchlist': True}
         self.acct.add_movie_watchlist(**kwargs)
 
-        self.acct.movie_watchlist()
+        self.acct.get_movie_watchlist()
         titles = [m['title'] for m in self.acct.results]
         self.assertIn(MOVIE_TITLE, titles)
 
