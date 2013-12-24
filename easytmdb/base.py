@@ -4,6 +4,9 @@ import json
 import requests
 
 
+class ApiKeyMissing(Exception):
+    pass
+
 class TMDB(object):
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json'}
@@ -26,8 +29,10 @@ class TMDB(object):
 
     def _get_params(self, params):
         from . import API_KEY
-        api_dict = {'api_key': API_KEY}
+        if not API_KEY:
+            raise ApiKeyMissing
 
+        api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
         else:
