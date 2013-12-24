@@ -11,6 +11,15 @@ tmdb.API_KEY = API_KEY
 tmdb.DEBUG_URL = DEBUG_URL
 
 
+def skip(func):
+    from nose import SkipTest
+
+    def wrapper(x):
+        raise SkipTest()
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+
 class TestConfiguration(unittest.TestCase):
 
     def test_info(self):
@@ -37,8 +46,10 @@ class TestAuthentication(unittest.TestCase):
         auth.token_new()
         self.assertEqual(auth.success, success)
 
+    @skip
     def test_session_new(self):
-        """This test method requires a valid, user authenticated token as
+        """This test is skipped by default. To include it, run: `nosetests --no-skip`
+        This test method requires a valid, user authenticated token as
         genereated by token_new. This can be achived by following step 2
         on https://www.themoviedb.org/documentation/api/sessions.
         """
