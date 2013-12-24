@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from tmdbsimple import base
+import tmdbsimple as tmdb
 from tmdbsimple.search import Search
 
-from . import API_KEY
+from . import API_KEY, DEBUG_URL
 
 
-base.api_key = API_KEY
-base.debug_url = 'http://private-dc67-themoviedb.apiary.io'
+tmdb.API_KEY = API_KEY
+tmdb.DEBUG_URL = DEBUG_URL
 
 
 class TestSearch(unittest.TestCase):

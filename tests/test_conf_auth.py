@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from tmdbsimple import base
+import tmdbsimple as tmdb
 from tmdbsimple.conf_auth import Configuration, Authentication
 
-from . import API_KEY, REQUEST_TOKEN
+from . import API_KEY, DEBUG_URL, REQUEST_TOKEN
 
 
-base.api_key = API_KEY
+tmdb.API_KEY = API_KEY
+tmdb.DEBUG_URL = DEBUG_URL
 
 
 class TestConfiguration(unittest.TestCase):

@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from tmdbsimple import base
+import tmdbsimple as tmdb
 from tmdbsimple.account import Account, Lists
 
 from . import (API_KEY, SESSION_ID, SUCCESS_CODE, UPDATE_CODE, DELETE_CODE,
-               USERNAME, MOVIE_ID, MOVIE_TITLE)
+               USERNAME, MOVIE_ID, MOVIE_TITLE, DEBUG_URL)
 
 
-base.api_key = API_KEY
-base.debug_url = 'http://private-dc67-themoviedb.apiary.io'
+tmdb.API_KEY = API_KEY
+tmdb.DEBUG_URL = DEBUG_URL
 
 
 class TestAccount(unittest.TestCase):
