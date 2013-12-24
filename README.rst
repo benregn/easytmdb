@@ -1,37 +1,38 @@
-tmdbsimple
+easytmdb
 ==========
 
 A wrapper for The Movie Database v3
 -----------------------------------
 
-*tmdbsimple* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *tmdbsimple*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
+*easytmdb* is a wrapper, written in Python, for The Movie Database (TMDb) API v3.  By calling the functions available in *easytmdb*, you can simplify your code and easily access a vast amount of movie, tv, and cast data.  To find out more about The Movie Database API, check out the overview page http://www.themoviedb.org/documentation/api and documentation page http://docs.themoviedb.apiary.io.
 
 Features
 --------
 
-- Supports Python 3
-- One-to-one mapping between *tmdbsimple* functions and TMDb methods.
+- Tested on Python 2.7.5 and 3.3.3
 - Implements all TMDb methods, including Authentication and Accounts.
 - Implements new TV features.
 - Easy to access data using Python class attributes.
-- Easy to experiment with *tmdbsimple* functions inside the Python interpreter.
+- Easy to experiment with *easytmdb* functions inside the Python interpreter.
 - Code tested with unittests, which illustrate the function call syntax.
 
 Installation
 ------------
 
-You can install *tmdbsimple* using one of the following techniques.
+You can install *easytmdb* using one of the following techniques.
 
 - Use pip:
+
 ::
 
-        pip install tmdbsimple
+        pip install easytmdb
 
 - Download the .zip or .tar.gz file from PyPI and install it yourself
-- Download the `source from Github` and install it yourself
+- Download the `source from Github`_ and install it yourself
+
 If you install it yourself, also install requests_.
 
-.. _source from Github: http://github.com/celiao/tmdbsimple
+.. _source from Github: http://github.com/benregn/easytmdb
 .. _requests: http://www.python-requests.org/en/latest/
 
 API Key
@@ -48,14 +49,14 @@ You will need an API key to The Movie Database to access the API.  To obtain a k
 
 Examples
 --------
-Once you have the *tmdbsimple* package installed and a TMDb API key, you can start to play with the data.
+Once you have the *easytmdb* package installed and a TMDb API key, you can start to play with the data.
 
 First, import the library and create an instance of a TMDB object.
 
 .. code-block:: python
 
-    >>> import tmdbsimple
-    >>> tmdb = TMDB('YOUR_API_KEY_HERE')
+    >>> import easytmdb as tmdb
+    >>> tmdb.API_KEY = 'YOUR_API_KEY_HERE'
 
 To communicate with The Movie Database API, create an instance of one of the object types, call one of the methods on the instance, and access the instance attributes.  Use keys to access the values of attributes that are dictionaries.
 
@@ -71,7 +72,7 @@ To communicate with The Movie Database API, create an instance of one of the obj
     >>> for c in movie.countries:
     ...    if c['iso_3166_1'] == 'US':
     ...         print(c['certification'])
-    ... 
+    ...
     'R'
 
 Let's play with the interface a bit more.  Suppose you and your friend are arguing over which movie in the Bourne series was most popular.  Your friend says the first in a series is *always* most popular.  You disagree.
@@ -82,7 +83,7 @@ Let's play with the interface a bit more.  Suppose you and your friend are argui
     >>> search.movie({'query': 'The Bourne'})
     >>> for s in search.results:
     ...     print(s['title'], s['id'], s['release_date'], s['popularity'])
-    ... 
+    ...
     The Bourne Ultimatum 2503 2007-08-03 55.2447062124256
     The Bourne Supremacy 2502 2004-07-23 43.4553609681985
     The Bourne Identity 2501 2002-06-06 38.5531563780592
@@ -125,3 +126,14 @@ You also can call one of the methods without explicitly instanciating an object.
 
 If you use Authentication to access a user Account, be sure to check out
 https://www.themoviedb.org/documentation/api/sessions.
+
+Acknowledgment
+--------------
+
+This project is based on `tmdbsimple`_ by Celia Oakley.
+
+Changes made:
+
+#. Use class inheritance instead of nested classes
+
+.. _tmdbsimple: https://github.com/celiao/tmdbsimple

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.people import People, Credits, Jobs
+import easytmdb as tmdb
+from easytmdb.people import People, Credits, Jobs
 
 from . import API_KEY, DEBUG_URL
 

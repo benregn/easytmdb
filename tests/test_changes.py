@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.changes import Changes
+import easytmdb as tmdb
+from easytmdb.changes import Changes
 
 from . import API_KEY, DEBUG_URL
 

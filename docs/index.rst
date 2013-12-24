@@ -1,6 +1,6 @@
-.. tmdbsimple documentation master file
+.. easytmdb documentation master file
 
-tmdbsimple documentation
+easytmdb documentation
 ====================================
 
 Contents:

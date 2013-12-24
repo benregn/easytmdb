@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.tv import TV, TVSeasons, TVEpisodes, Networks
+import easytmdb as tmdb
+from easytmdb.tv import TV, TVSeasons, TVEpisodes, Networks
 
 from . import API_KEY, DEBUG_URL
 

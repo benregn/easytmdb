@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.movies import Movies, Collections, Companies, Genres, Keywords, Reviews
+import easytmdb as tmdb
+from easytmdb.movies import Movies, Collections, Companies, Genres, Keywords, Reviews
 
 from . import API_KEY, DEBUG_URL, SESSION_ID, SUCCESS_CODE, UPDATE_CODE
 
