@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.conf_auth import Configuration, Authentication
+import easytmdb as tmdb
+from easytmdb.conf_auth import Configuration, Authentication
 
 from . import API_KEY, DEBUG_URL, REQUEST_TOKEN
 

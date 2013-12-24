@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.search import Search
+import easytmdb as tmdb
+from easytmdb.search import Search
 
 from . import API_KEY, DEBUG_URL
 

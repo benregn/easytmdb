@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.account import Account, Lists
+import easytmdb as tmdb
+from easytmdb.account import Account, Lists
 
 from . import (API_KEY, SESSION_ID, SUCCESS_CODE, UPDATE_CODE, DELETE_CODE,
                USERNAME, MOVIE_ID, MOVIE_TITLE, DEBUG_URL)

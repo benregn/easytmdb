@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import tmdbsimple as tmdb
-from tmdbsimple.discover import Discover
+import easytmdb as tmdb
+from easytmdb.discover import Discover
 
 from . import API_KEY, DEBUG_URL
 
