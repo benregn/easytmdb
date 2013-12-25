@@ -1,10 +1,12 @@
 language: python
 python:
-  - "2.7"
-  - "3.3"
-  - "pypy"
-# command to install dependencies
+  - '2.7'
+  - '3.3'
+  - 'pypy'
 install:
   - pip install -r requirements.txt
-# command to run tests
 script: nosetests
+env:
+  global:
+    # TMDB_API_KEY
+    secure: TvcqWznFm+cBlmmNSn1S1MFRTrbbsYThAkqkksqoFeNW7uPrkzf8DQp8DZkAPvmPRhlOcsKb/6Me48k3kws90mwl27ImaUgHHWE+fmgUbb8y6mItRgrLx4QJBdn/Nhm6ddPBg7ui2Vn/zLOvFBOa+sOY3Rj5ZD56LGLFO0kShPU=
