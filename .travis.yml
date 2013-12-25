@@ -7,6 +7,4 @@ install:
   - pip install -r requirements.txt
 script: nosetests
 env:
-  global:
-    # tmdb api key
-    - secure: GgD+7/H8oKRtcfkuLDOr1FCH9Wi+vV86ZMuDrwm0CKGlM35YNLRxo5VP7r10eaSeBxgEbR+JFs7J/7cETYK/Aj5tia3ZhaQzYkvIiIRKYmd9TvJQhvet6G9NwFHbfaBPFzpmZ4x6hRN+PdSWNLXaqaUq4h+dSEr9LwXchjVE+g0=
+  - secure: bif6CNvtWnkWLiak5bpTJ8mLOgvKU3hqHDMLtcQK8uNuFRHpHY4KRGSCwEIqY/8q9KhGIr8QV9q/Uot/yLPCWnuATLNgUMLitlRPeJ1shG3TIe+1frU2Z/M3FXJbeLS867zDUiVzq33d4V5yNn/MTq9MKpGtz1aoQiKDe2T9aT8=
