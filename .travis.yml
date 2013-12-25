@@ -8,5 +8,5 @@ install:
 script: nosetests
 env:
   global:
-    # TMDB_API_KEY
-    secure: TvcqWznFm+cBlmmNSn1S1MFRTrbbsYThAkqkksqoFeNW7uPrkzf8DQp8DZkAPvmPRhlOcsKb/6Me48k3kws90mwl27ImaUgHHWE+fmgUbb8y6mItRgrLx4QJBdn/Nhm6ddPBg7ui2Vn/zLOvFBOa+sOY3Rj5ZD56LGLFO0kShPU=
+    # tmdb api key
+    - secure: GgD+7/H8oKRtcfkuLDOr1FCH9Wi+vV86ZMuDrwm0CKGlM35YNLRxo5VP7r10eaSeBxgEbR+JFs7J/7cETYK/Aj5tia3ZhaQzYkvIiIRKYmd9TvJQhvet6G9NwFHbfaBPFzpmZ4x6hRN+PdSWNLXaqaUq4h+dSEr9LwXchjVE+g0=
