@@ -39,33 +39,27 @@ class TMDB(object):
             params = api_dict
         return params
 
-    def _get(self, path, params=None):
+    def _request(self, method, path, params=None, payload=None):
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
-        response = requests.get(url, params=params, headers=self.headers)
+        response = requests.request(method, url,
+                                    params=params,
+                                    data=json.dumps(payload),
+                                    headers=self.headers)
 
-        return json.loads(response.content.decode('utf-8'))
+        response.raise_for_status()
+        response.encoding = 'utf-8'
+        return response.json()
+
+    def _get(self, path, params=None):
+        return self._request('GET', path, params=params)
 
     def _post(self, path, params=None, payload=None):
-        url = self._get_complete_url(path)
-        params = self._get_params(params)
-        if not payload:
-            payload = {}
-
-        response = requests.post(url, params=params, data=json.dumps(payload), headers=self.headers)
-
-        return json.loads(response.content.decode('utf-8'))
+        return self._request('POST', path, params=params, payload=payload)
 
     def _delete(self, path, params=None, payload=None):
-        url = self._get_complete_url(path)
-        params = self._get_params(params)
-        if not payload:
-            payload = {}
-
-        response = requests.delete(url, params=params, data=json.dumps(payload), headers=self.headers)
-
-        return json.loads(response.content.decode('utf-8'))
+        return self._request('DELETE', path, params=params, payload=payload)
 
     #
     # Set attributes to dictionary values.
