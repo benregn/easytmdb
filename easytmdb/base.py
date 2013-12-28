@@ -45,7 +45,7 @@ class TMDB(object):
 
         response = requests.request(method, url,
                                     params=params,
-                                    data=json.dumps(payload),
+                                    data=json.dumps(payload) if payload else payload,
                                     headers=self.headers)
 
         response.raise_for_status()
