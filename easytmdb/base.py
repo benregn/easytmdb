@@ -61,14 +61,15 @@ class TMDB(object):
     def _delete(self, path, params=None, payload=None):
         return self._request('DELETE', path, params=params, payload=payload)
 
-    #
-    # Set attributes to dictionary values.
-    # - e.g.
-    # >>> tmdb = TMDB()
-    # >>> movie = tmdb.Movie(103332)
-    # >>> response = movie.info()
-    # >>> movie.title  # instead of response['title']
-    #
     def _set_attrs_to_values(self, response={}):
+        """Set attributes to dictionary values.
+
+        For example:
+
+          >>> tmdb = TMDB()
+          >>> movie = tmdb.Movie(103332)
+          >>> response = movie.info()
+          >>> movie.title  # instead of response['title']
+        """
         for key in response.keys():
             setattr(self, key, response[key])
