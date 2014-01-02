@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import easytmdb as tmdb
 from easytmdb.movies import Movies, Collections, Companies, Genres, Keywords, Reviews
 
-from . import API_KEY, DEBUG_URL, SESSION_ID, SUCCESS_CODE, UPDATE_CODE
-
-
-tmdb.API_KEY = API_KEY
-tmdb.DEBUG_URL = DEBUG_URL
+from . import SESSION_ID, SUCCESS_CODE, UPDATE_CODE
 
 
 class TestMovies(unittest.TestCase):

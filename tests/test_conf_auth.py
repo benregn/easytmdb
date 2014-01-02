@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import easytmdb as tmdb
 from easytmdb.conf_auth import Configuration, Authentication
 
-from . import API_KEY, DEBUG_URL, REQUEST_TOKEN
-
-
-tmdb.API_KEY = API_KEY
-tmdb.DEBUG_URL = DEBUG_URL
+from . import REQUEST_TOKEN
 
 
 def skip(func):
