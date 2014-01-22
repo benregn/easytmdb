@@ -4,6 +4,9 @@ import json
 import requests
 
 
+class ApiKeyMissing(Exception):
+    pass
+
 class TMDB(object):
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json'}
@@ -26,50 +29,46 @@ class TMDB(object):
 
     def _get_params(self, params):
         from . import API_KEY
-        api_dict = {'api_key': API_KEY}
+        if not API_KEY:
+            raise ApiKeyMissing
 
+        api_dict = {'api_key': API_KEY}
         if params:
             params.update(api_dict)
         else:
             params = api_dict
         return params
 
-    def _get(self, path, params=None):
+    def _request(self, method, path, params=None, payload=None):
         url = self._get_complete_url(path)
         params = self._get_params(params)
 
-        response = requests.get(url, params=params, headers=self.headers)
+        response = requests.request(method, url,
+                                    params=params,
+                                    data=json.dumps(payload) if payload else payload,
+                                    headers=self.headers)
 
-        return json.loads(response.content.decode('utf-8'))
+        response.encoding = 'utf-8'
+        return response.json()
+
+    def _get(self, path, params=None):
+        return self._request('GET', path, params=params)
 
     def _post(self, path, params=None, payload=None):
-        url = self._get_complete_url(path)
-        params = self._get_params(params)
-        if not payload:
-            payload = {}
-
-        response = requests.post(url, params=params, data=json.dumps(payload), headers=self.headers)
-
-        return json.loads(response.content.decode('utf-8'))
+        return self._request('POST', path, params=params, payload=payload)
 
     def _delete(self, path, params=None, payload=None):
-        url = self._get_complete_url(path)
-        params = self._get_params(params)
-        if not payload:
-            payload = {}
+        return self._request('DELETE', path, params=params, payload=payload)
 
-        response = requests.delete(url, params=params, data=json.dumps(payload), headers=self.headers)
-
-        return json.loads(response.content.decode('utf-8'))
-
-    #
-    # Set attributes to dictionary values.
-    # - e.g.
-    # >>> tmdb = TMDB()
-    # >>> movie = tmdb.Movie(103332)
-    # >>> response = movie.info()
-    # >>> movie.title  # instead of response['title']
-    #
     def _set_attrs_to_values(self, response={}):
+        """Set attributes to dictionary values.
+
+        For example:
+
+          >>> tmdb = TMDB()
+          >>> movie = tmdb.Movie(103332)
+          >>> response = movie.info()
+          >>> movie.title  # instead of response['title']
+        """
         for key in response.keys():
             setattr(self, key, response[key])

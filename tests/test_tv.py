@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import easytmdb as tmdb
 from easytmdb.tv import TV, TVSeasons, TVEpisodes, Networks
-
-from . import API_KEY, DEBUG_URL
-
-
-tmdb.API_KEY = API_KEY
-tmdb.DEBUG_URL = DEBUG_URL
 
 
 class TestTV(unittest.TestCase):

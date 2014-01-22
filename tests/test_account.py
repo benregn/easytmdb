@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-import easytmdb as tmdb
 from easytmdb.account import Account, Lists
 
-from . import (API_KEY, SESSION_ID, SUCCESS_CODE, UPDATE_CODE, DELETE_CODE,
-               USERNAME, MOVIE_ID, MOVIE_TITLE, DEBUG_URL)
-
-
-tmdb.API_KEY = API_KEY
-tmdb.DEBUG_URL = DEBUG_URL
+from . import (SESSION_ID, SUCCESS_CODE, UPDATE_CODE, DELETE_CODE,
+               USERNAME, MOVIE_ID, MOVIE_TITLE)
 
 
 class TestAccount(unittest.TestCase):

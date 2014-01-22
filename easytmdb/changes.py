@@ -9,14 +9,14 @@ class Changes(TMDB):
     """
     BASE_PATH = ''
     URLS = {
-        'movie': 'movie/changes',
-        'person': 'person/changes',
+        'movies': 'movie/changes',
+        'persons': 'person/changes',
     }
 
     def __init__(self):
         super(Changes, self).__init__()
 
-    def movie(self, **kwargs):
+    def movies(self, **kwargs):
         """Get a list of movie ids that have been edited.
 
         By default the last 24 hours are shown and only 100 items per page. The
@@ -33,13 +33,13 @@ class Changes(TMDB):
         :param start_date: (optional) A string in the format 'YYYY-MM-DD'.
         :param end_date: (optional) Same as start_date.
         """
-        path = self._get_path('movie')
+        path = self._get_path('movies')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
         return response
 
-    def person(self, **kwargs):
+    def persons(self, **kwargs):
         """Get a list of person ids that have been edited.
 
         By default the last 24 hours are shown and only 100 items per page. The
@@ -56,7 +56,7 @@ class Changes(TMDB):
         :param start_date: (optional) A string in the format 'YYYY-MM-DD'.
         :param end_date: (optional) Same as start_date.
         """
-        path = self._get_path('person')
+        path = self._get_path('persons')
 
         response = self._get(path, kwargs)
         self._set_attrs_to_values(response)
