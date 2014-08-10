@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name='easytmdb',
-    version='0.1.1',
+    version='0.2.0',
     author='Tómas Þór Jónsson',
     author_email='benregn@gmail.com',
     description='A Python wrapper for The Movie Database API v3',
