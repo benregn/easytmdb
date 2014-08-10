@@ -451,58 +451,6 @@ class Companies(TMDB):
         return response
 
 
-class Genres(TMDB):
-    """
-
-    See: http://docs.themoviedb.apiary.io/#genres
-    """
-    BASE_PATH = 'genre/'
-    URLS = {
-        'list': 'list',
-        'movies': '{id}/movies',
-    }
-
-    def __init__(self, id=0):
-        self.id = id
-        super(Genres, self).__init__()
-
-    def list(self, **kwargs):
-        """Get the list of genres.
-
-        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fgenre%2Flist
-
-        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
-                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
-        """
-        path = self._get_path('list')
-
-        response = self._get(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-    def movies(self, **kwargs):
-        """Get the list of movies for a particular genre by id.
-
-        By default, only movies with 10 or more votes are included.
-
-        TMDB doc: http://docs.themoviedb.apiary.io/#get-%2F3%2Fgenre%2F%7Bid%7D%2Fmovies
-
-        :param page: (optional) Result page number, e.g. 3.
-        :param language: (optional) ISO 639-1 code, e.g. 'de'. For a list of
-                         639-1 codes, see http://en.wikipedia.org/wiki/ISO_639-1
-        :param include_all_movies: (optional) Toggle the inclusion of all movies
-                                   and not just those with 10 or more ratings.
-                                   Either `True` or `False`.
-        :param include_adult: (optional) Toggle the inclusion of adult titles. Either `True`
-                              or `false`.
-        """
-        path = self._get_id_path('movies')
-
-        response = self._get(path, kwargs)
-        self._set_attrs_to_values(response)
-        return response
-
-
 class Keywords(TMDB):
     """
 
