@@ -46,3 +46,9 @@ class TestSearch(unittest.TestCase):
         search = Search()
         search.keywords({'query': query})
         self.assertTrue(hasattr(search, 'results'))
+
+    def test_multi(self):
+        query = 'Paul'
+        search = Search()
+        search.multi({'query': query})
+        self.assertTrue(hasattr(search, 'results'))

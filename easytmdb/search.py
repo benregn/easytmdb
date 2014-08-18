@@ -17,6 +17,7 @@ class Search(TMDB):
         'list': 'list',
         'company': 'company',
         'keyword': 'keyword',
+        'multi': 'multi',
     }
 
     def __init__(self):
@@ -158,6 +159,23 @@ class Search(TMDB):
         :param page: (optional) Result page number, e.g. 3.
         """
         path = self._get_path('keyword')
+        kwargs.update({'query': query})
+
+        response = self._get(path, kwargs)
+        self._set_attrs_to_values(response)
+        return response
+
+    def multi(self, query, **kwargs):
+        """Search the movie, tv show and person collections with a single query.
+
+        Each item returned in the result array has a media_type field that maps to
+        either movie, tv or person. Each mapped result is the same response you
+        would get from each independent search.
+
+        :param query: search string
+        :param page: (optional) Result page number, e.g. 3.
+        """
+        path = self._get_path('multi')
         kwargs.update({'query': query})
 
         response = self._get(path, kwargs)
